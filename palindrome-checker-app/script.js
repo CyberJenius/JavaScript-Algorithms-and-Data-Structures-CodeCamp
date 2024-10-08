@@ -56,14 +56,14 @@ function cleanInput(wordArray){
   let toRemove = [];
 
   //loops and adds every non-normal letter/number to a to remove function
-  for (char of wordArray){
+  for (let char of wordArray){
     if(regex.test(char) == false){
       toRemove.push(char);
     }
   }
 
   //removes every item added to the toRemove list
-  for (item of toRemove){
+  for (let item of toRemove){
     wordArray.splice(wordArray.indexOf(item), 1);
   }
 
