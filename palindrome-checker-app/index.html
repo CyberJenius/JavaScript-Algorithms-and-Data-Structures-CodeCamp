@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta href = "styles.css" rel = "stylesheet">
+  <link href = "styles.css" rel = "stylesheet">
   <title>Palindrome Checker</title>
 </head>
 <body>
-  <h1>Is your word a palindrome?</h1>
-  <input id = "text-input" type = "text"/>
-  <button id = "check-btn">Check</button>
-  <p id = "result"></p>
+  <h1 class = header>Is your word a palindrome?</h1>
+  <div class = input-background>
+    <div class = "input-box">
+      <input id = "text-input" type = "text"/>
+      <button id = "check-btn" class = "button">Check</button>
+    </div>
+    <p id = "result" class = "result"></p>
+  </div>
+
+  <h2 class = "header2">What is a Palindrome?</h2>
+  <hr>
+  <p id = "explanation"> A palindrome is a word that is spelled the same both forwards and backwards. 
+    Enter a word into the input field above and press enter to see if your word is a palindrome.
+  </p>
 
   <script src = "script.js"></script>
 </body>
