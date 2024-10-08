@@ -17,9 +17,8 @@ function checkInputValues(){
   //Takes each character of the input string and puts them into a list
   let inputWord = inputField.value;
   let chars = inputWord.split("");
-  inputWord = cleanInput(chars).join("").toLowerCase();
-
-  console.log(inputWord);
+  chars = cleanInput(chars);
+  inputWord = chars.join("").toLowerCase();
 
   //if there is only one character it is a palindrome
   if(chars.length == 1){
@@ -27,10 +26,10 @@ function checkInputValues(){
     outputToUser(isPalindrome, inputWord);
   }
 
-  chars = cleanInput(chars);
   //reverses chars list and joins them back into a string
   chars = chars.reverse();
-  const inputReverse = chars.join("");
+  const inputReverse = chars.join("").toLowerCase();
+
 
   //Does general checking for serialized inputs
   if(inputWord === inputReverse){
@@ -51,14 +50,22 @@ function outputToUser(isPalindrome, word){
   }
 }
 
+//cleans the user input to make checking if it is a palindrome easy
 function cleanInput(wordArray){
   let regex = /[a-zA-Z0-9]/;
-  console.log(wordArray);
+  let toRemove = [];
+
+  //loops and adds every non-normal letter/number to a to remove function
   for (char of wordArray){
     if(regex.test(char) == false){
-      let toRemove = wordArray.indexOf(char);
-      wordArray.splice(toRemove, 1);
+      toRemove.push(char);
     }
   }
+
+  //removes every item added to the toRemove list
+  for (item of toRemove){
+    wordArray.splice(wordArray.indexOf(item), 1);
+  }
+
   return wordArray;
 }
