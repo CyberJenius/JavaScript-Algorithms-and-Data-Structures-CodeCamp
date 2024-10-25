@@ -25,6 +25,43 @@ body{
   margin-bottom: 8vh;
 }
 
+.input-box label{
+  font-size: 30px;
+  font-weight: 500;
+  color: rgb(31, 31, 31);
+  margin-bottom: 20px;
+}
+
+.input-box input{
+  background-color:rgb(57, 57, 57);
+  border-color: black;
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.input-box button{
+  padding: 15px;
+  border-radius: 10px;
+  border-style: none;
+  border: solid;
+  border-color:rgb(57, 57, 57);
+  color:rgb(31, 31, 31);
+  background-color: rgb(154, 89, 251);
+}
+
+.input-box button:hover{
+  background-image: linear-gradient(to bottom right, rgb(154, 89, 251) 0%, rgb(106, 105, 105) 60%)
+}
+
+.input-box button:active{
+  background-image: linear-gradient(rgb(106, 105, 105),rgb(106, 105, 105) );
+}
+
+
 #output{
     display: flex;
     flex-direction: column;
