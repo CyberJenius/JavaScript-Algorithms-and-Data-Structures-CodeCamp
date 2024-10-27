@@ -3,6 +3,7 @@ const outField = document.getElementById("output");
 const convertBtn = document.getElementById("convert-btn");
 
 const convert = () => {
+
   if(input.value === ""){
     outField.innerHTML = `Please enter a valid number`;
     return;
@@ -10,7 +11,7 @@ const convert = () => {
     outField.innerHTML = `Please enter a number greater than or equal to 1`;
     return;
   }else if(parseInt(input.value) >= 4000){
-    outField.innerHTML = `Please enter a number less than or rqual to 3999`;
+    outField.innerHTML = `Please enter a number less than or equal to 3999`;
     return;
   }
   let output = "";
@@ -25,6 +26,7 @@ const decimalToRoman = (input) => {
   let digitThree = "";
   let digitFour = "";
 
+  //deteremines which functions to call based on length of inputArr
   if(inputArr[3]){
     digitOne = digitOneToRoman(parseInt(inputArr[3]), "");
     digitTwo = digitTwoToRoman(parseInt(inputArr[2]), "");
