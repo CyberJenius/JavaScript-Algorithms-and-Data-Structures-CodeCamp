@@ -16,6 +16,7 @@ body{
   margin: auto;
   align-items: center;
   border: solid;
+  border-width: 4px;
   border-radius: 10px;
   padding-top: 4vh;
   padding-bottom: 4vh;
@@ -30,12 +31,14 @@ body{
   font-weight: 500;
   color: rgb(31, 31, 31);
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .input-box input{
   background-color:rgb(57, 57, 57);
   border-color: black;
   border: solid;
+  width: 20vw;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 20px;
@@ -68,10 +71,14 @@ body{
     margin: auto;
     align-items: center;
     border: solid;
+    border-width: 4px;
     border-radius: 10px;
     padding-top: 4vh;
     padding-bottom: 4vh;
     margin-left: 30vw;
     margin-right: 30vw;
     background-color: rgb(128, 128, 234);
+    border-color: rgb(91, 91, 255);
+    color:rgb(57, 57, 57);
+    font-size: 30px;
 }
