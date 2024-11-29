@@ -6,6 +6,7 @@ const results = document.getElementById("results-div");
 const checkInput = () => {
   if(userInput.value === ""){
     alert("Please provide a phone number");
+    return;
   }else if(userInput.value.trim().match(/[1]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/)){
     console.log(userInput.value);
     return true;
@@ -47,10 +48,10 @@ const clearResults = () => {
 
 const checkResults = () => {
   if(checkInput()){
-    results.textContent += (`Valid US number: ${userInput.value}` + "\n");
+    results.innerHTML += (`<br>Valid US number: ${userInput.value}`);
     return;
   }else{
-    results.textContent += (`Invalid US number: ${userInput.value}` + "\n");
+    results.innerHTML += (`<br>Invalid US number: ${userInput.value}`);
     return;
   }
 }

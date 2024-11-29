@@ -1,0 +1,40 @@
+body{
+  background-color: rgb(31, 40, 111);
+  color:rgb(198, 147, 248);
+}
+
+h1{
+  text-align: center;
+  margin-top: 9vh;
+  font-family: Geneva, Tahoma, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+input{
+  font-family: Geneva;
+  padding: 1vh;
+  border-radius: 10px;
+  border: solid;
+  border-color:rgb(198, 147, 248);
+  text-align: center;
+}
+
+.results{
+  white-space: pre-wrap;
+  font-family: Geneva;
+  font-size: 15px;
+  width: 50vw;
+  text-align: center;
+  margin: auto;
+  margin-top: 3vh;
+}
+
+button{
+  border-radius: 10px;
+  padding: 1vh;
+  width: 10vw;
+}
+
+button:active{
+  background-color: rgb(198, 147, 248);
+}
