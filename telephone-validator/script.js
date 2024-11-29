@@ -7,37 +7,10 @@ const checkInput = () => {
   if(userInput.value === ""){
     alert("Please provide a phone number");
     return;
-  }else if(userInput.value.trim().match(/[1]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/)){
+  }else if(userInput.value.trim().match((/[1]?\s?\(?\d{3}\)?\s?\d{3}\s?\d{4}/)|(/[1]?\s?\(?\d{3}\)?\-?\d{3}\-?\d{4}/))){
     console.log(userInput.value);
     return true;
-  } else if(userInput.value.trim().match(/[0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  } else if(userInput.value.trim().match(/[1]\s[0-9][0-9][0-9]\-[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  } else if(userInput.value.trim().match(/[0-9][0-9][0-9]\-[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  } else if(userInput.value.trim().match(/[1]\s\([0-9][0-9][0-9]\)\s[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  } else if(userInput.value.trim().match(/[1]\s\([0-9][0-9][0-9]\)\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  }else if(userInput.value.trim().match(/[1]\([0-9][0-9][0-9]\)[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value)
-    return true;
-  } else if(userInput.value.trim().match(/\([0-9][0-9][0-9]\)[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value)
-    return true;
-  } else if(userInput.value.trim().match(/[1][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  } else if(userInput.value.trim().match(/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/)){
-    console.log(userInput.value);
-    return true;
-  }else {
+  }else{
     return false;
   }
 }
