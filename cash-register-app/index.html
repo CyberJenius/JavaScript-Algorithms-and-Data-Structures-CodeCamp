@@ -8,9 +8,20 @@
     <title>Cash Register</title>
   </head>
   <body>
-    <input id = "cash" type = "number">
+    <div class = "header-div">
+      <span class = "dollar-sign1">$</span>
+      <h1>Cash<br>Register</h1>
+      <span class = "dollar-sign2">$</span>
+    </div>
     <div id = "change-due"></div>
-    <button id = "purchase-btn">Buy!</button>
+    <div class = "input-and-btn">
+      <input id = "cash" type = "number">
+      <div class = "change-and-total">
+        <p id = "total">Total: </p>
+        <p id = "change">Change in Drawer:</p>
+      <div>
+      <button id = "purchase-btn">Buy!</button>
+    </div>
   </body>
   <script src ="script.js"></script>
 </html>
