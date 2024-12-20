@@ -59,7 +59,7 @@ changeInDrawer.innerHTML += `<br> Penny: ${cid[0][1]}
       i--;
     })
     if(parseFloat(checkArr.reduce((a, b) => a + b, 0).toFixed(2)) != startDif || difference > 0 || totalCID < startDif){
-      return `Status INSUFFICIENT_FUNDS`;
+      return `Status: INSUFFICIENT_FUNDS`;
     }else if(cid[0][1] === 0 && cid[1][1] === 0 && cid[2][1] === 0 && cid[3][1] === 0 && cid[4][1] === 0 && cid[5][1] === 0 && cid[6][1] === 0 && cid[7][1] === 0 && cid[8][1] === 0){
       let returnString = "Status: CLOSED ";
       changeArr.forEach((val) => {
