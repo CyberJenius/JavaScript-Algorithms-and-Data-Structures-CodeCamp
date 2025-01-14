@@ -1,7 +1,13 @@
-let price = 19.5;
-let cid = [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]
-//above variables provided by FreeCodeCamp
-
+let price = 37.62;
+let cid = [ [ 'PENNY', 0.13 ],
+[ 'NICKEL', 0.45 ],
+[ 'DIME', 0.3 ],
+[ 'QUARTER', 0.5 ],
+[ 'ONE', 11 ],
+[ 'FIVE', 0 ],
+[ 'TEN', 0 ],
+[ 'TWENTY', 0 ],
+[ 'ONE HUNDRED', 0 ] ];
 
 const cashInput = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
@@ -22,44 +28,40 @@ changeInDrawer.innerHTML += `<br> Penny: ${cid[0][1]}
 
 
  const calculateChange = (funds, newCID) => {
-  let totalCID = newCID[0][1] + newCID[1][1] + newCID[2][1] + newCID[3][1] + newCID[4][1] + newCID[5][1] + newCID[6][1] + newCID[7][1] + newCID[8][1];
+  let totalCID = (newCID[0][1] + newCID[1][1] + newCID[2][1] + newCID[3][1] + newCID[4][1] + newCID[5][1] + newCID[6][1] + newCID[7][1] + newCID[8][1]) * 100;
 
-  const startDif = parseFloat(funds - price).toFixed(2);
-  let difference = funds - price;
-  const moneyVals = [100, 20, 10, 5, 1, .25, .10, .05, .01];
+  const startDif = (funds - price).toFixed(2) * 100;
+  let difference = (funds - price).toFixed(2) * 100;
+  const moneyVals = [10000, 2000, 1000, 500, 100, 25, 10, 5, 1];
   let changeArr = [];
   let checkArr = [];
   let i = 8;
-  console.log(parseFloat(totalCID).toFixed(2));
-    if(parseFloat(totalCID).toFixed(2) >= parseFloat(startDif)){ 
+    if(totalCID >= startDif){ 
         moneyVals.forEach((val)=> {
-        if(difference / val > 1 && newCID[i][1] > 0){
-          if((Math.floor(difference / val) * val) > newCID[i][1]){
+        val = Number(val);
+        if(difference / val >= 1 && newCID[i][1] > 0){
+          if((difference / val * val) > (newCID[i][1] * 100)){
             checkArr.push(newCID[i][1]);
             changeArr.push(newCID[i][0] + ": $" + newCID[i][1]);
-            difference = difference - newCID[i][1];
-            totalCID = parseFloat(parseFloat(totalCID - newCID[i][1]).toFixed(2));
+            difference = difference - (newCID[i][1] * 100);
+            totalCID = totalCID - (newCID[i][1] * 100);
             newCID[i][1] = 0;
           }else {
-            newCID[i][1] = parseFloat(parseFloat(newCID[i][1] - Math.floor(difference / val) * val).toFixed(2));
-            checkArr.push(Math.floor(difference / val) * val);
-            changeArr.push(newCID[i][0] + ": $" + (Math.floor(difference / val) * val));
-            totalCID -= difference / val * val;
-            difference = parseFloat(difference - Math.floor(difference / val) * val).toFixed(2);
+            newCID[i][1] = newCID[i][1] - (((Math.floor((difference)/(val).toFixed(2)) * val) / 100));
+            checkArr.push((Math.floor((difference)/(val).toFixed(2)) * val)/100);
+            changeArr.push(newCID[i][0] + ": $" + ((Math.floor((difference)/(val).toFixed(2)) * val)/100));
+            totalCID -= (Math.floor((difference)/(val).toFixed(2)) * val);
+            difference = difference - (Math.floor((difference)/(val).toFixed(2)) * val);
           }
         } 
         i--;
       })
-    } else {
+      if (parseFloat(checkArr.reduce((a, b) => a + b, 0).toFixed(2)) < parseFloat(startDif/100)){
+        return `Status: INSUFFICIENT_FUNDS`;
+      }
+    }else {
       return `Status: INSUFFICIENT_FUNDS`;
     }
-
-    console.log(difference);
-
-    console.log(changeArr);
-    console.log(startDif);
-    console.log(totalCID);
-    console.log(parseFloat(checkArr.reduce((a, b) => a + b, 0).toFixed(2)));
     
     if(totalCID === 0 || parseFloat(totalCID).toFixed(2) === startDif){
       let returnString = "Status: CLOSED ";
@@ -90,15 +92,30 @@ changeInDrawer.innerHTML += `<br> Penny: ${cid[0][1]}
 
  purchaseBtn.addEventListener("click", () => {
   let newCID = [...cid];
-  console.log(newCID);
-  if(cashInput.value < price){
+  let total = 0
+  newCID.forEach((val) => {
+    total += Number(val[1]);
+  })
+  if(total < Number((cashInput.value - price).toFixed(2))){
+    changeDue.innerHTML = "Status: INSUFFICIENT_FUNDS";
+    return;
+  }
+  else if(Number(cashInput.value) < price){
     alert("Customer does not have enough money to purchase the item")
     return;
   }else if(price === Number(cashInput.value)){
     changeDue.innerHTML = "No change due - customer paid with exact cash";
     return;
-  }else if(price < cashInput.value){
-    changeDue.innerHTML = calculateChange(parseFloat(cashInput.value), newCID);
+  }else if(price < Number(cashInput.value)){
+    let total = newCID.reduce((total, val) => {
+      return total + parseFloat(val[1]);
+    }, 0);
+    if(total < Number((cashInput.value - price).toFixed(2))){
+      changeDue.innerHTML = "Status: INSUFFICIENT_FUNDS";
+      return;
+    }else{
+      changeDue.innerHTML = calculateChange(parseFloat(cashInput.value), newCID);
+    }
   }
   updateDrawer(newCID);
  });
