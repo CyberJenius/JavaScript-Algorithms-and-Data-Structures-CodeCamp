@@ -1,0 +1,71 @@
+body{
+  background-color: rgb(0, 0, 77);
+  color: yellow;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.title{
+  font-size: 5vh;
+  text-align: center;
+}
+
+#device{
+  background-color: white;
+  border-radius: 3vh;
+  align-items: center;
+  color: rgb(0, 94, 255);
+  border-color: red;
+  border-style: solid;
+  border-width: 2vh;
+  width: 400px;
+  height: 75vh;
+  margin: auto;
+  box-shadow: 2vw 2vh 1px 1vh rgb(241, 95, 95) ;
+}
+
+#input-label{
+  font-size: 18px;
+  text-align: center;
+}
+
+.input-div{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2vw;
+}
+
+input{
+  font-size: 14px;
+  border-color: rgb(0, 94, 255);
+  border-radius: 2vh;
+  padding: 1vh;
+}
+
+button{
+  font-size: 14px;
+  background-color: rgb(0, 94, 255);
+  border-radius: 3vh;
+  padding: 2vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  border-style: none;
+  color: white;
+}
+
+table{
+  border-collapse: separate;
+  border-spacing: 5px;
+  width: 100%;
+  margin-top: 38vh;
+}
+
+table tr{
+  background-color: rgb(194, 194, 194);
+  font-size: 24px;
+}
+
+table td{
+  font-size: 14px;
+}
