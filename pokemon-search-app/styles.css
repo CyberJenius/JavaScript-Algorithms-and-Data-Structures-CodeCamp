@@ -83,6 +83,13 @@ button{
   margin-top: 0px;
 }
 
+#image-holder{
+  height: 250px;
+  width: 250px;
+  margin: auto;
+}
+
+
 img{
   width: 250px;
   height: 250px;
@@ -94,10 +101,17 @@ img{
 }
 
 #types{
+  display: flex;
+  flex-direction: row;
   margin-left: 2vw;
   gap: 10px;
   font-size: 18px;
   margin-top: -10vh;
+}
+
+#types p{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 table{

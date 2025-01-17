@@ -5,7 +5,7 @@ const nameField = document.getElementById("pokemon-name");
 const idField = document.getElementById("pokemon-id");
 const heightField = document.getElementById("height");
 const weightField = document.getElementById("weight");
-const imageField = document.getElementById("pokemon-image");
+const imageField = document.getElementById("image-holder");
 const typesField = document.getElementById("types");
 const hpField = document.getElementById("hp");
 const attackField = document.getElementById("attack");
@@ -32,10 +32,11 @@ const makeRequest = async (pokeRequest) => {
   try{
     const res = await fetch(`${url}/${pokeRequest}`)
     const data = await res.json();
+    console.log(data);
     return data;
   } catch(err){
     alert("Pokémon not found");
-    return;
+    return 0;
   }
 }
 
@@ -44,12 +45,10 @@ const outputData = (name, id, height, weight, stats, types, sprites) => {
   idField.textContent = `#${id}`;
   heightField.textContent = `Height: ${height}`;
   weightField.textContent = `Weight: ${weight}`;
-  console.log(sprites.front_default);
-  imageField.setAttribute("src", sprites.front_default);
-  console.log(types[0].type.name);
-  typesField.innerHTML = "Types:"
+  console.log(sprites);
+  imageField.innerHTML = `<img id = "sprite" src = "${sprites.front_default}">`;
   types.forEach(type => {
-    typesField.innerHTML += " " + type.type.name + ";";
+    typesField.innerHTML += "<p>" + type.type.name.toUpperCase() + "</p>";
   });
   console.log(stats);
   for(let i = 0; i < 6; i++){
@@ -58,14 +57,18 @@ const outputData = (name, id, height, weight, stats, types, sprites) => {
 }
 
 const getPokemonData = () => {
-  let pokeRequest = serializeInput(input.value);
-  makeRequest(pokeRequest).then(
-    (result) => {
-      console.log(result);
-      let {name, id, height, weight, stats, types, sprites} = result;
-      outputData(name, id, height, weight, stats, types, sprites);
-    }
-  );
+  if(input.value != ""){
+    typesField.innerHTML = "";
+    let pokeRequest = serializeInput(input.value);
+    makeRequest(pokeRequest).then(
+      (result) => {
+        if(result != 0){
+          let {name, id, height, weight, stats, types, sprites} = result;
+          outputData(name, id, height, weight, stats, types, sprites);
+        }
+      }
+    );
+  }
 }
 
 
